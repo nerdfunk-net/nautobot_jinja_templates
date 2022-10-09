@@ -1,4 +1,4 @@
-{% include './jinja_templates/ios/hostname.j2' %}
+{% include './ios/hostname.j2' %}
 
 {% if 'aaa-new-model' in config_context %}
 {% if config_context["aaa-new-model"] == false %}
@@ -8,27 +8,27 @@ aaa new-model
 {% endif %}
 {% endif %}
 
-{% include "./jinja_templates/ios/call_home.j2" %}
+{% include "./ios/call_home.j2" %}
 
-{% include './jinja_templates/ios/dns.j2' %}
+{% include './ios/dns.j2' %}
 
-{% include './jinja_templates/ios/local_user.j2' %}
+{% include './ios/local_user.j2' %}
 
 {% if config_context["cdp"] == true %}
 cdp run
 {% endif %}
 
-{% include './jinja_templates/ios/interfaces.j2' %}
+{% include './ios/interfaces.j2' %}
 
 {% for tag in tags %}
 {% if 'ospf' in tag["name"] %}
-{% include './jinja_templates/ios/ospf.j2' %}
+{% include './ios/ospf.j2' %}
 {% endif %}
 {% endfor %}
 
 {% for tag in tags %}
 {% if 'bgp' in tag["name"] %}
-{% include './jinja_templates/ios/bgp.j2' %}
+{% include './ios/bgp.j2' %}
 {% endif %}
 {% endfor %}
 
@@ -41,12 +41,12 @@ cdp run
 {% endif %}
 ip scp server enable
 
-{% include './jinja_templates/ios/syslog.j2' %}
+{% include './ios/syslog.j2' %}
 
-{% include './jinja_templates/ios/snmp.j2' %}
+{% include './ios/snmp.j2' %}
 !
-{% include './jinja_templates/ios/console_vty.j2' %}
+{% include './ios/console_vty.j2' %}
 !
-{% include './jinja_templates/ios/ntp.j2' %}
+{% include './ios/ntp.j2' %}
 
-{% include './jinja_templates/ios/services.j2' %}
+{% include './ios/services.j2' %}
