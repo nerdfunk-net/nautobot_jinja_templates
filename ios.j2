@@ -1,12 +1,6 @@
 {% include './ios/hostname.j2' %}
 
-{% if 'aaa-new-model' in config_context %}
-{% if config_context["aaa-new-model"] == false %}
-no aaa new-model
-{% else %}
-aaa new-model
-{% endif %}
-{% endif %}
+{% include './ios/aaa.j2' %}
 
 {% include './ios/dns.j2' %}
 
