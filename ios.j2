@@ -42,3 +42,7 @@ ip scp server enable
 {% include './ios/ntp.j2' %}
 
 {% include './ios/services.j2' %}
+
+{% if config_context[hostname] is defined %}
+{{ config_context[hostname]["config"]  }}
+{% endif %}
