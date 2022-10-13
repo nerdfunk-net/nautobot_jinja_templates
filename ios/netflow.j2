@@ -2,12 +2,16 @@
 {% for flowrecord in config_context["netflow"]["flowrecord"] %}
 
 flow record {{ flowrecord["name"] }}
-description {{ flowrecord["description"] }}
+ description {{ flowrecord["description"] }}
 {% for match in flowrecord["match"] %}
-match {{ match }}
+ match {{ match }}
 {% endfor %}
 {% for collect in flowrecord["collect"] %}
-collect {{ collect }}
+ collect {{ collect }}
 {% endfor %}
 {% endfor %}
 
+{% for flowexporter in config_context["netflow"]["flowexporter"] %}
+ description {{ flowexporter["description"] }}
+ destination {{ flowexporter["destination"] }}
+{% endfor %}
