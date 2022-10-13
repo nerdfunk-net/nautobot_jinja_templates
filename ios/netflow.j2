@@ -21,3 +21,13 @@ flow exporter {{ flowexporter["name"] }}
  {{ config }}
 {% endfor %}
 {% endfor %}
+
+{% for flowmonitor in config_context["netflow"]["flowmonitor"] %}
+flow monitor {{ flowmonitor["name"] }}
+ description {{ flowmonitor["description"] }}
+ exporter {{ flowmonitor["exporter"] }}
+ record {{ flowmonitor["record"] }}
+{% for config in flowmonitor["config"] %}
+ {{ config }}
+{% endfor %}
+{% endfor %}
