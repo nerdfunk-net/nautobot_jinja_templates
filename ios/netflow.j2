@@ -6,4 +6,11 @@ description {{ flowrecord["description"] }}
 
 {% endfor %}
 
+{% for flowexporter in config_context["netflow"]["flowexporter"] %}
+
+flow exporter {{ flowexporter["name"] }}
+description {{ flowexporter["description"] }}
+destination {{ flowexporter["destination"] }}
+
+{% endfor %}
 
