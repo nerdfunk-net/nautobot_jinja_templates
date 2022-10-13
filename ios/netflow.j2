@@ -4,9 +4,7 @@
 flow record {{ flowrecord["name"] }}
 description {{ flowrecord["description"] }}
 
-{% for ipv4 in flowrecord["match"]["ipv4"] %}
-match ipv4 {{ ipv4 }}
-{% endfor %}
+{{ flowrecord }}
 
 {% endfor %}
 
