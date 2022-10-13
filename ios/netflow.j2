@@ -3,10 +3,11 @@
 
 flow record {{ flowrecord["name"] }}
 description {{ flowrecord["description"] }}
-
 {% for match in flowrecord["match"] %}
 match {{ match }}
 {% endfor %}
-
+{% for collect in flowrecord["collect"] %}
+collect {{ collect }}
+{% endfor %}
 {% endfor %}
 
