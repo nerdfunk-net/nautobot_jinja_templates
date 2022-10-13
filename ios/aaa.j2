@@ -1,1 +1,5 @@
-{{ config_context["aaa"]["config"] }}
+aaa new-model
+
+aaa group server tacacs+ {{ config_context["aaa"]["tacgroup"] }}
+  server name {{ config_context["aaa"]["server"] }}
+  ip tacacs source-interface {{ config_context["aaa"]["source"] }}
