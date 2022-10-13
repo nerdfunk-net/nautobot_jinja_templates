@@ -1,7 +1,14 @@
 
 {% for flowrecord in config_context["netflow"]["flowrecord"] %}
 
-{{ flowrecord["name"] }}
+flow record {{ flowrecord["name"] }}
+description {{ flowrecord["description"] }}
+
+{% for match in flowrecord["match"] %}
+{% for ipv4 in flowrecord["ipv4"] %}
+match ipv4 {{ ipv4 }}
+{% endfor %}
+{% endfor %}
 
 {% endfor %}
 
