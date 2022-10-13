@@ -13,6 +13,9 @@ match transport {{ transport }}
 {% for interface in flowrecord["match"]["interface"] %}
 match interface {{ interface }}
 {% endfor %}
+{% for collect in flowrecord["collect"] %}
+collect {{ collect }}
+{% endfor %}
 
 {% endfor %}
 
