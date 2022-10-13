@@ -1,10 +1,8 @@
 
 {% for netflow in config_context["netflow"] %}
-{% for flowrecord in netflow %}
 
-flow record {{ flowrecord["name"] }}
+{{ netflow }}
 
-{% endfor %}
 {% endfor %}
 
 
