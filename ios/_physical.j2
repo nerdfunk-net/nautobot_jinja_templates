@@ -26,9 +26,7 @@ interface {{ interface["name"] }}
  no mop sysid
 {% for tag in interface["tags"] %}
 {% if 'netflow' in tag["slug"] %}
-NETFLOW
+
 {% endif %}
 {% endfor %}
-
-{{ interface }}
 
