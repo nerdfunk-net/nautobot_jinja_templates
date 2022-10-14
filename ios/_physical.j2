@@ -30,10 +30,10 @@ interface {{ interface["name"] }}
 {% if flowmonitor["type"] == "input" %}
  ip flow monitor {{ flowmonitor["name"] }} input
 {% endif %}
-{% endfor %}
-{% for flowmonitor in config_context["netflow"]["flowmonitor"] %}
 {% if flowmonitor["type"] == "output" %}
  ip flow monitor {{ flowmonitor["name"] }} output
+{% endif %}
+{% endfor %}
 {% endif %}
 {% endfor %}
 {% endif %}
