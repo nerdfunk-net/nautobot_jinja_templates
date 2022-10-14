@@ -28,7 +28,6 @@ interface {{ interface["name"] }}
 {% if 'netflow' in tag["slug"] %}
 NETFLOW START
 {% for flowmonitor in config_context["netflow"]["flowmonitor"] %}
-{{ flowmonitor }}
 {% if flowmonitor["type"] == "input" %}
 ip flow monitor {{ flowmonitor["name"] }} input
 {% endif %}
