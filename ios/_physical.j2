@@ -26,8 +26,11 @@ interface {{ interface["name"] }}
  no mop sysid
 {% for tag in interface["tags"] %}
 {% if 'netflow' in tag["slug"] %}
-ip flow monitor {{ config_context["netflow"]["flowmonitor"]["name"] }} input
-ip flow monitor {{ config_context["netflow"]["flowmonitor"]["name"] }} output
+{% for flowmonitor in config_context["netflow"]["flowmonitor"] %}
+{% if flowmonitor["type"] == "input" %}
+ip flow monitor {{ flowmonitor["name"] }} input
+{% endif %}
+{% endfor %}
 {% endif %}
 {% endfor %}
 
