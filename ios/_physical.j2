@@ -24,9 +24,11 @@ interface {{ interface["name"] }}
  negotiation auto
  no mop enabled
  no mop sysid
-{% if 'netflow' in interface["tags"] %}
+{% for tag in interface["tags"] %}
+{% if 'netflow' in tag["slug"] %}
 NETFLOW
 {% endif %}
+{% endfor %}
 
 {{ interface }}
 
