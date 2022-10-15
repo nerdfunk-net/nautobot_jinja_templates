@@ -36,7 +36,7 @@ interface {{ interface["name"] }}
 {# end of netflow #}
 {# begin ospf #}
 {% if 'ospf' in tag["slug"] %}
-{% if config_context["keys"]["ospf"]["digest"] is defined %}
+{% if config_context["keys"]["ospf"]["authentication"] is defined %}
  ip ospf authentication {{ config_context["keys"]["ospf"]["digest"] }}
 {% endif %}
 {% endif %}
