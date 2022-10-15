@@ -21,7 +21,6 @@ interface {{ interface["name"] }}
 {% if interface["enabled"] == false %}
  shutdown
 {% endif %}
-
 {% for tag in interface["tags"] %}
 {% if 'netflow' in tag["slug"] %}
 {# generate netflow #}
