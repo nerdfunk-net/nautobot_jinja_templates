@@ -26,6 +26,6 @@ udld enable
 
 {% if 'additional' in config_context %}
 {% for config in config_context["additional"] %}
- {{ config }}
+ {{ config["config"] }}
 {% endfor %}
 {% endif %}
