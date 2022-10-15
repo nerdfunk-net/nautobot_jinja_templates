@@ -37,7 +37,7 @@ interface {{ interface["name"] }}
 {# begin ospf #}
 {% if 'ospf' in tag["slug"] %}
 {% if config_context["keys"]["ospf"]["authentication"] is defined %}
- ip ospf authentication {{ config_context["keys"]["ospf"]["digest"] }}
+ ip ospf authentication {{ config_context["keys"]["ospf"]["authentication"] }}
 {% endif %}
 {% endif %}
 {# end of ospf #}
