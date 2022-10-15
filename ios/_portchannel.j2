@@ -12,8 +12,10 @@ interface {{ interface["name"] }}
  no ip address
 {% endif %}
 
-{% for config in config_context["interfaces"] %}
-{% if interface["name"] in config["name"] %}
-add {{ config }}
+{% for ifaceconfig in config_context["interfaces"] %}
+{% if interface["name"] in ifaceconfig["name"] %}
+{% for config in ifaceconfig["name"]["config"] %}
+{{ config }}
+{% endfor %}
 {% endif %}
 {% endfor %}
