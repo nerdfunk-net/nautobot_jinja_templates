@@ -23,3 +23,9 @@ udld enable
 {% include './ios/ntp.j2' %}
 
 {% include './ios/interfaces.j2' %}
+
+{% if 'config' in config_context %}
+{% for config in config_context["config"] %}
+ {{ config }}
+{% endfor %}
+{% endif %}
