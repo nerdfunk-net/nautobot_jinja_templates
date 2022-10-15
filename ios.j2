@@ -24,7 +24,7 @@ udld enable
 
 {% include './ios/interfaces.j2' %}
 
-{% if 'config' in config_context[hostname] %}
+{% if 'config' in config_context %}
 {% for config in config_context["config"] %}
  {{ config }}
 {% endfor %}
