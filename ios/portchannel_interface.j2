@@ -1,4 +1,5 @@
-{% import "./ios/acl.j2" as acl %}
+{% import "./ios/helper/acl.j2" as acl %}
+{% import "./ios/helper/netflow_interface_config.j2" as netflow %}
 {% macro interface(interface,config_context) %}
 interface {{ interface.name }}
 {% if interface.description | length > 1 %}
@@ -7,6 +8,7 @@ interface {{ interface.name }}
 {% if interface.ip_addresses | length > 0 %}
 {%   for addr in interface.ip_addresses %}
 {%     if addr.address is defined %}
+ no switchport
  ip address {{ addr.address }}
 {%     endif %}
 {%   endfor %}
@@ -16,33 +18,27 @@ interface {{ interface.name }}
 {% if config_context.acl is defined %}
 {{ acl.set (config_context, interface.name) }}
 {% endif %}
-{% if interface.enabled == false %}
- shutdown
-{% endif %}
-{% for tag in interface.tags %}
-{# begin netflow #}
-{%   if 'netflow' in tag.slug %}
-{%     for flowmonitor in config_context.netflow.flowmonitor %}
-{%       if flowmonitor.type == "input" %}
- ip flow monitor {{ flowmonitor.name }} input
-{%       endif %}
-{%       if flowmonitor.type == "output" %}
- ip flow monitor {{ flowmonitor.name }} output
-{%       endif %}
-{%     endfor %}
-{%   endif %}
-{# end of netflow #}
-{# begin ospf #}
-{%   if 'ospf' in tag.slug %}
-{%     if config_context.keys.ospf is defined %}
-{%       if config_context.keys.ospf.authentication is defined %}
+{#- process ALL tags -#}
+{%  for tag in interface.tags %}
+{%    if 'netflow' in tag.slug %}
+{{      netflow.set(config_context)
+{%    endif %}
+{#    begin ospf #}
+{%    if 'ospf' in tag.slug %}
+{%      if config_context.keys.ospf is defined %}
+{%        if config_context.keys.ospf.authentication is defined %}
  ip ospf authentication {{ config_context.keys.ospf.authentication }}
  ip ospf message-digest-key 1 md5 7 {{ config_context.keys.ospf.md-key-7 }}
-{%       endif %}
-{%     endif %}
-{%   endif %}
-{# end of ospf #}
-{% endfor %}
+{%        endif %}
+{%      endif %}
+{%    endif %}
+{#    end of ospf -#}
+{#  end of tags -#}
+{%  endfor %}
+{#- check if interface is shut -#}
+{%- if interface.enabled == false %}
+ shutdown
+{%  endif %}
 {# additional config #}
 {% if 'interfaces' in config_context %}
 {%   for ifaceconfig in config_context.interfaces %}

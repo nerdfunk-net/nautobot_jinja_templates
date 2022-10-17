@@ -1,4 +1,4 @@
-{% import "./ios/acl.j2" as acl %}
+{% import "./ios/helper/acl.j2" as acl %}
 {% macro interface(interface,config_context) %}
 interface {{ interface.name }}
 {% if interface.description | length > 1 %}
@@ -15,9 +15,6 @@ interface {{ interface.name }}
 {%  endif %}
 {%- if config_context.acl is defined %}
 {{    acl.set (config_context, interface.name) }}
-{%  endif %}
-{%- if interface.enabled == false %}
- shutdown
 {%  endif %}
 {%- for tag in interface.tags %}
 {#  begin netflow -#}
@@ -44,6 +41,10 @@ interface {{ interface.name }}
 {#- end of ospf -#}
 {#- end of tags -#}
 {%  endfor -%}
+{#- check if interface is shut -#}
+{%- if interface.enabled == false %}
+ shutdown
+{%  endif %}
 {# additional config #}
 {%- if 'interfaces' in config_context -%}
 {%   for ifaceconfig in config_context.interfaces -%}
