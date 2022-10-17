@@ -12,7 +12,7 @@
 {% for interface in interfaces %}
 {%   if 'Loop' not in interface["name"] %}
 {%     if 'Port-channel' in interface["name"] %}
-{%       po.physical_interface(interface,config_context) }}
+{%       pc.portchannel_interface(interface,config_context) }}
 {%     endif %}
 {%   endif %}
 {% endfor %}

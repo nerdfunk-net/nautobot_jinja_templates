@@ -1,4 +1,4 @@
-{% macro physical_interface(interface,config_context) %}
+{% macro portchannel_interface(interface,config_context) %}
 interface {{ interface.name }}
 {% if interface.description | length > 1 %}
  description {{ interface.description }}
