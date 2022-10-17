@@ -37,24 +37,24 @@ interface {{ interface.name }}
 {%   endif %}
 {# end of netflow #}
 {# begin ospf #}
-{%   if 'ospf' in tag.slug %}
-{%     if config_context.keys.ospf is defined %}
-{%       if config_context.keys.ospf.authentication is defined %}
+{%   if 'ospf' in tag.slug -%}
+{%     if config_context.keys.ospf is defined -%}
+{%       if config_context.keys.ospf.authentication is defined -%}
  ip ospf authentication {{ config_context.keys.ospf.authentication }}
  ip ospf message-digest-key 1 md5 7 {{ config_context.keys.ospf.md-key-7 }}
-{%       endif %}
-{%     endif %}
-{%   endif %}
+{%       endif -%}
+{%     endif -%}
+{%   endif -%}
 {# end of ospf #}
-{% endfor %}
+{% endfor -%}
 {# additional config #}
-{% if 'interfaces' in config_context %}
-{%   for ifaceconfig in config_context.interfaces %}
-{%     if interface.name in ifaceconfig.name %}
-{%       for config in ifaceconfig.config %}
+{% if 'interfaces' in config_context -%}
+{%   for ifaceconfig in config_context.interfaces -%}
+{%     if interface.name in ifaceconfig.name -%}
+{%       for config in ifaceconfig.config -%}
  {{ config }}
-{%       endfor %}
-{%     endif %}
-{%   endfor %}
-{% endif %}
+{%       endfor -%}
+{%     endif -%}
+{%   endfor -%}
+{% endif -%}
 {% endmacro %}
