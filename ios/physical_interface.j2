@@ -17,7 +17,10 @@ interface {{ interface.name }}
  no ip address
 {% endif %}
 {#- check if this interface is a trunk // has multiple VLAN -#}
+{% if 'ACCESS' in interface.mode %}
+ACCESS MODE
 
+{% endif %}
 {% if config_context.acl is defined %}
 {{   acl.set (config_context, interface.name) }}
 {% endif %}
