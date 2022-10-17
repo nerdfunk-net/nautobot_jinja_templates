@@ -21,7 +21,7 @@
 {%   if 'Loop' not in interface["name"] %}
 {%     if 'Port-channel' not in interface["name"] %}
 {#       include "./ios/_physical.j2" -#}
-{{       pi.physical_interface() }}
+{{       pi.physical_interface(interface) }}
 {%     endif %}
 {%   endif %}
 
