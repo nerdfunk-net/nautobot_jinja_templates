@@ -49,12 +49,12 @@ interface {{ interface.name }}
 {% endfor -%}
 {# additional config #}
 {%- if 'interfaces' in config_context -%}
-{%   for ifaceconfig in config_context.interfaces -%}
+{%-   for ifaceconfig in config_context.interfaces -%}
 {%-     if interface.name in ifaceconfig.name -%}
-{%       for config in ifaceconfig.config -%}
-{{  config }}
-{%       endfor -%}
-{%     endif -%}
-{%   endfor -%}
+{%-       for config in ifaceconfig.config -%}
+ {{ config }}
+{%        endfor -%}
+{%      endif -%}
+{%    endfor -%}
 {%  endif -%}
 {% endmacro %}
