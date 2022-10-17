@@ -10,10 +10,8 @@
 {% endfor %}
 {# Port-channel second #}
 {%- for interface in interfaces -%}
-{%-   if 'Loop' not in interface["name"] -%}
-{%-     if 'Port-channel' in interface["name"] -%}
-{{        portchannel.interface(interface,config_context) }}
-{%      endif %}
+{%-   if 'Port-channel' in interface["name"] -%}
+{{      portchannel.interface(interface,config_context) }}
 {%    endif %}
 {%  endfor %}
 {#- now all other interfaces -#}
