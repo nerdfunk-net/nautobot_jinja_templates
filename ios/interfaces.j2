@@ -1,10 +1,11 @@
 {# include macros #}
-{% import "./ios/physical_interface.j2" as pi %}
-{% import "./ios/portchannel_interface.j2" as pc %}
+{% import "./ios/physical_interface.j2" as physical %}
+{% import "./ios/portchannel_interface.j2" as portchannel %}
+{% import "./ios/loopback_interface.j2" as loopback %}
 {# Loopback first #}
 {% for interface in interfaces %}
-{% if 'Loop' in interface["name"] %}
-{% include "./ios/_loopback.j2" %}
+{%   if 'Loop' in interface["name"] %}
+{{     loopback.interface(interface,config_context) }}
 
 {% endif %}
 {% endfor %}
@@ -12,7 +13,7 @@
 {%- for interface in interfaces -%}
 {%-   if 'Loop' not in interface["name"] -%}
 {%-     if 'Port-channel' in interface["name"] -%}
-{{        pc.portchannel_interface(interface,config_context) }}
+{{        portchannel.interface(interface,config_context) }}
 {%      endif %}
 {%    endif %}
 {%  endfor %}
@@ -20,7 +21,7 @@
 {%- for interface in interfaces %}
 {%-   if 'Loop' not in interface["name"] %}
 {%-     if 'Port-channel' not in interface["name"] %}
-{{        pi.physical_interface(interface,config_context) }}
+{{        physicalinterface(interface,config_context) }}
 {%      endif %}
 {%    endif %}
 {%- endfor -%}
