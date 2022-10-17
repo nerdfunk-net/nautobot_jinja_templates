@@ -20,6 +20,10 @@ interface {{ interface.name }}
 
 {% if interface.mode == 'TAGGED' %}
 TAGGED
+{% elif interface.mode == 'UNTAGGED' %}
+UNTAGGED
+{% elif interface.mode == 'ACCESS' %}
+ACCESS
 {% endif %}
 
 {% if config_context.acl is defined %}
