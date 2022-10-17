@@ -17,7 +17,7 @@ interface {{ interface.name }}
 {%     set interfacename = interface.name %}
 {%     if config_context.acl.interfaces.interfacename is defined %}
 {# ip access-group {{ config_context["acl"]["interfaces"][interface["name"]]["acl"] }} {{ config_context["acl"]["interfaces"][interface["name"]]["direction"] }} #}
-{{ ip access-group {{ config_context.acl.interfaces.interfacename.acl }}
+ip access-group {{ config_context.acl.interfaces.interfacename.acl }}
 {%     endif %}
 {%   endif %}
 {% endif %}
