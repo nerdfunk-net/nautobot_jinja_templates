@@ -12,19 +12,19 @@ interface {{ interface.name }}
 {% else %}
  no ip address
 {% endif %}
-{% if config_context.acl is defined %}
-{%   if config_context.acl.interfaces is defined %}
-{%     set interfacename = interface.name %}
-{%     if config_context.acl.interfaces.interfacename is defined %}
+{% if config_context.acl is defined -%}
+{%   if config_context.acl.interfaces is defined -%}
+{%     set interfacename = interface.name -%}
+{%     if config_context.acl.interfaces.interfacename is defined -%}
  ip access-group {{ config_context.acl.interfaces.interfacename.acl }} {{ config_context.acl.interfaces.interfacename.direction }}
-{%     endif %}
-{%   endif %}
-{% endif %}
+{%     endif -%}
+{%   endif -%}
+{% endif -%}
 {% if interface.enabled == false %}
  shutdown
 {% endif %}
 {% for tag in interface.tags %}
-{# begin netflow #}
+{# begin netflow -#}
 {%   if 'netflow' in tag.slug %}
 {%     for flowmonitor in config_context.netflow.flowmonitor %}
 {%       if flowmonitor.type == "input" %}
