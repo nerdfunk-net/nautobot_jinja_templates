@@ -21,7 +21,7 @@
 {%- for interface in interfaces %}
 {%-   if 'Loop' not in interface["name"] %}
 {%-     if 'Port-channel' not in interface["name"] %}
-{{        physicalinterface(interface,config_context) }}
+{{        physical.interface(interface,config_context) }}
 {%      endif %}
 {%    endif %}
 {%- endfor -%}
