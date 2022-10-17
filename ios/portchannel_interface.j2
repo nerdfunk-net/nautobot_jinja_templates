@@ -1,5 +1,6 @@
 {% import "./ios/helper/acl.j2" as acl %}
 {% import "./ios/helper/netflow_interface_config.j2" as netflow %}
+{% import "./ios/helper/ospfj2" as ospf %}
 {% macro interface(interface,config_context) %}
 interface {{ interface.name }}
 {% if interface.description | length > 1 %}
@@ -25,12 +26,7 @@ interface {{ interface.name }}
 {%    endif %}
 {#    begin ospf #}
 {%    if 'ospf' in tag.slug %}
-{%      if config_context.keys.ospf is defined %}
-{%        if config_context.keys.ospf.authentication is defined %}
- ip ospf authentication {{ config_context.keys.ospf.authentication }}
- ip ospf message-digest-key 1 md5 7 {{ config_context.keys.ospf.md-key-7 }}
-{%        endif %}
-{%      endif %}
+{{      ospf.set(config_context)
 {%    endif %}
 {#    end of ospf -#}
 {#  end of tags -#}
