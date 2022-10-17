@@ -52,7 +52,7 @@ interface {{ interface.name }}
 {%   for ifaceconfig in config_context.interfaces -%}
 {%-     if interface.name in ifaceconfig.name -%}
 {%       for config in ifaceconfig.config -%}
-  {{ config }}
+{{  config }}
 {%       endfor -%}
 {%     endif -%}
 {%   endfor -%}
