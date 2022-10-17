@@ -1,8 +1,5 @@
 {# include macros #}
-{% include "./ios/physical_interface.j2" %}
-{% macro physical_interface() %}
-interface
-{% endmacro %}
+{% import "./ios/physical_interface.j2" as pi %}
 {# Loopback first #}
 {% for interface in interfaces %}
 {% if 'Loop' in interface["name"] %}
@@ -24,7 +21,7 @@ interface
 {%   if 'Loop' not in interface["name"] %}
 {%     if 'Port-channel' not in interface["name"] %}
 {#       include "./ios/_physical.j2" -#}
-{{       physical_interface() }}
+{{       pi.physical_interface() }}
 {%     endif %}
 {%   endif %}
 
