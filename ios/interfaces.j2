@@ -16,10 +16,11 @@
 
 {# now all other interfaces #}
 {% for interface in interfaces %}
-{% if 'Loop' not in interface["name"] %}
-{% if 'Port-channel' not in interface["name"] %}
-{% include "./ios/_physical.j2" %}
-{% endif %}
-{% endif %}
+{%   if 'Loop' not in interface["name"] %}
+{%     if 'Port-channel' not in interface["name"] %}
+{#       include "./ios/_physical.j2" #}
+{{       physical_interface(interface) }}
+{%     endif %}
+{%   endif %}
 
 {% endfor %}
