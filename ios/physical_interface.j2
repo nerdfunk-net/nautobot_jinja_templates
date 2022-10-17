@@ -18,7 +18,13 @@ interface {{ interface.name }}
 {% endif %}
 {#- check if this interface is a trunk // has multiple VLAN -#}
 
-{{ interface.mode }}
+{% if interface.mode is defined %}
+{%   if 'ACCESS' in interface.mode %}
+ACCESS
+{%   elif 'TAGGED' in interface.mode %}
+TAGGED
+{%   endif %}
+{% endif %}
 
 {% if config_context.acl is defined %}
 {{   acl.set (config_context, interface.name) }}
