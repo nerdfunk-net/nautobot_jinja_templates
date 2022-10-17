@@ -22,11 +22,11 @@ interface {{ interface.name }}
 {#- process ALL tags -#}
 {%  for tag in interface.tags %}
 {%    if 'netflow' in tag.slug %}
-{{      netflow.set(config_context)
+{{      netflow.set(config_context) }}
 {%    endif %}
 {#    begin ospf #}
 {%    if 'ospf' in tag.slug %}
-{{      ospf.set(config_context)
+{{      ospf.set(config_context) }}
 {%    endif %}
 {#    end of ospf -#}
 {#  end of tags -#}
