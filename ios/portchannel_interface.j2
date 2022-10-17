@@ -1,6 +1,6 @@
 {% import "./ios/helper/acl.j2" as acl %}
 {% import "./ios/helper/netflow_interface_config.j2" as netflow %}
-{% import "./ios/helper/ospfj2" as ospf %}
+{% import "./ios/helper/ospf.j2" as ospf %}
 {% macro interface(interface,config_context) %}
 interface {{ interface.name }}
 {% if interface.description | length > 1 %}
@@ -24,11 +24,9 @@ interface {{ interface.name }}
 {%    if 'netflow' in tag.slug %}
 {{      netflow.set(config_context) }}
 {%    endif %}
-{#    begin ospf #}
 {%    if 'ospf' in tag.slug %}
 {{      ospf.set(config_context) }}
 {%    endif %}
-{#    end of ospf -#}
 {#  end of tags -#}
 {%  endfor %}
 {#- check if interface is shut -#}
