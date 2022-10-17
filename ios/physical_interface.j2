@@ -19,11 +19,7 @@ interface {{ interface.name }}
 {#- check if this interface is a trunk // has multiple VLAN -#}
 
 {% if interface.mode is defined %}
-{%   if 'ACCESS' in interface.mode %}
-ACCESS
-{%   elif 'TAGGED' in interface.mode %}
-TAGGED
-{%   endif %}
+DEFINED
 {% endif %}
 
 {% if config_context.acl is defined %}
