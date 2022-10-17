@@ -11,7 +11,7 @@
 {# Port-channel second #}
 {%- for interface in interfaces -%}
 {%-   if 'Port-channel' in interface["name"] -%}
-{%      portchannel.interface(interface,config_context) %}
+{{      portchannel.interface(interface,config_context) }}
 {%    endif %}
 {%  endfor %}
 {#- now all other interfaces -#}
