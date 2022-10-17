@@ -1,5 +1,5 @@
 {# include macros #}
-{# include "./ios/physical_interface.j2" #}
+{% include "./ios/physical_interface.j2" %}
 {# Loopback first #}
 {% for interface in interfaces %}
 {% if 'Loop' in interface["name"] %}
