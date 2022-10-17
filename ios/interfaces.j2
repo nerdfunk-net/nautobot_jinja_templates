@@ -20,8 +20,8 @@
 {% for interface in interfaces %}
 {%   if 'Loop' not in interface["name"] %}
 {%     if 'Port-channel' not in interface["name"] %}
-{#       include "./ios/_physical.j2" #}
-{{       physical_interface(interface) }}
+{{       include "./ios/_physical.j2" }}
+{#       physical_interface(interface) #}
 {%     endif %}
 {%   endif %}
 
