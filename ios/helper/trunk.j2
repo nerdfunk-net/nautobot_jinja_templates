@@ -1,0 +1,4 @@
+{% macro interface(interface,config_context) %}
+ switchport mode trunk
+ switchport trunk allowed vlan {{ interface.tagged_vlans.name }}
+{% endmacro %}
