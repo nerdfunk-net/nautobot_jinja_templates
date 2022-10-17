@@ -1,3 +1,5 @@
+{# include macros #}
+{% include "./ios/physical_interface.j2" %}
 {# Loopback first #}
 {% for interface in interfaces %}
 {% if 'Loop' in interface["name"] %}
@@ -7,19 +9,19 @@
 
 {# Port-channel second #}
 {% for interface in interfaces %}
-{% if 'Loop' not in interface["name"] %}
-{% if 'Port-channel' in interface["name"] %}
-{% include "./ios/_portchannel.j2" %}
-{% endif %}
-{% endif %}
+{%   if 'Loop' not in interface["name"] %}
+{%     if 'Port-channel' in interface["name"] %}
+{#       include "./ios/_portchannel.j2" #}
+{{       physical_interface(interface) }}
+{%     endif %}
+{%   endif %}
 {% endfor %}
 
 {# now all other interfaces #}
 {% for interface in interfaces %}
 {%   if 'Loop' not in interface["name"] %}
 {%     if 'Port-channel' not in interface["name"] %}
-{#       include "./ios/_physical.j2" #}
-{{       physical_interface(interface) }}
+{%       include "./ios/_physical.j2" %}
 {%     endif %}
 {%   endif %}
 
