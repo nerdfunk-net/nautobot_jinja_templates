@@ -6,7 +6,6 @@
 {% for interface in interfaces %}
 {%   if 'Loop' in interface["name"] %}
 {{     loopback.interface(interface,config_context) }}
-
 {% endif %}
 {% endfor %}
 {# Port-channel second #}
