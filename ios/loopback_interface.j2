@@ -1,4 +1,4 @@
-{% import "./ios/acl.j2" as acl %}
+{% import "./ios/helper/acl.j2" as acl %}
 {% macro interface(interface,config_context) %}
 interface {{ interface.name }}
 {% if interface.description | length > 1 %}
