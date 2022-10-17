@@ -8,19 +8,18 @@
 {% endif %}
 {% endfor %}
 {# Port-channel second #}
-{% for interface in interfaces %}
-{%   if 'Loop' not in interface["name"] %}
-{%     if 'Port-channel' in interface["name"] %}
-{{       pc.portchannel_interface(interface,config_context) }}
-{%     endif %}
-{%   endif %}
-{% endfor %}
-{# now all other interfaces #}
-{% for interface in interfaces %}
-{%   if 'Loop' not in interface["name"] %}
-{%     if 'Port-channel' not in interface["name"] %}
-{{       pi.physical_interface(interface,config_context) }}
-{%     endif %}
-{%   endif %}
-
-{% endfor %}
+{%- for interface in interfaces -%}
+{%-   if 'Loop' not in interface["name"] -%}
+{%-     if 'Port-channel' in interface["name"] -%}
+{{        pc.portchannel_interface(interface,config_context) }}
+{%      endif %}
+{%    endif %}
+{%  endfor %}
+{#- now all other interfaces -#}
+{%- for interface in interfaces %}
+{%-   if 'Loop' not in interface["name"] %}
+{%-     if 'Port-channel' not in interface["name"] %}
+{{        pi.physical_interface(interface,config_context) }}
+{%      endif %}
+{%    endif %}
+{%- endfor -%}
