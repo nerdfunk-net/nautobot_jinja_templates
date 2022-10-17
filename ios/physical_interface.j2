@@ -26,7 +26,10 @@ UNTAGGED
 {% elif interface.mode == 'ACCESS' %}
  switchport
 {% endif %}
-
+{# check if interface is part of LAG #}
+{% if interface.lag.name is defined %}
+LAG LAG LAG
+{% endif %}
 {% if config_context.acl is defined %}
 {{   acl.set (config_context, interface.name) }}
 {% endif %}
