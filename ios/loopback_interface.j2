@@ -1,3 +1,4 @@
+{% import "./ios/acl.j2" as acl %}
 {% macro interface(interface,config_context) %}
 interface {{ interface.name }}
 {% if interface.description | length > 1 %}
@@ -12,14 +13,9 @@ interface {{ interface.name }}
 {%  else %}
  no ip address
 {%  endif %}
-{%- if config_context.acl is defined -%}
-{%-  if config_context.acl.interfaces is defined -%}
-{%     set interfacename = interface.name -%}
-{%-    if config_context.acl.interfaces.interfacename is defined -%}
- ip access-group {{ config_context.acl.interfaces.interfacename.acl }} {{ config_context.acl.interfaces.interfacename.direction }}
-{%     endif -%}
-{%   endif -%}
-{%  endif -%}
+{%- if config_context.acl is defined %}
+{{    acl.set (config_context, interface.name) }}
+{%  endif %}
 {% if interface.enabled == false %}
  shutdown
 {% endif %}

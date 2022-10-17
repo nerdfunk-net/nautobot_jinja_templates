@@ -1,3 +1,4 @@
+{% import "./ios/acl.j2" as acl %}
 {% macro interface(interface,config_context) %}
 interface {{ interface.name }}
 {% if interface.description | length > 1 %}
@@ -12,29 +13,24 @@ interface {{ interface.name }}
 {%  else %}
  no ip address
 {%  endif %}
-{%- if config_context.acl is defined -%}
-{%-  if config_context.acl.interfaces is defined -%}
-{%     set interfacename = interface.name -%}
-{%-    if config_context.acl.interfaces.interfacename is defined -%}
- ip access-group {{ config_context.acl.interfaces.interfacename.acl }} {{ config_context.acl.interfaces.interfacename.direction }}
-{%     endif -%}
-{%   endif -%}
-{%  endif -%}
-{% if interface.enabled == false %}
+{%- if config_context.acl is defined %}
+{{    acl.set (config_context, interface.name) }}
+{%  endif %}
+{%- if interface.enabled == false %}
  shutdown
-{% endif %}
-{% for tag in interface.tags %}
-{# begin netflow -#}
-{%-  if 'netflow' in tag.slug %}
-{%     for flowmonitor in config_context.netflow.flowmonitor %}
-{%-      if flowmonitor.type == "input" %}
+{%  endif %}
+{%- for tag in interface.tags %}
+{#  begin netflow -#}
+{%-   if 'netflow' in tag.slug %}
+{%      for flowmonitor in config_context.netflow.flowmonitor %}
+{%-       if flowmonitor.type == "input" %}
  ip flow monitor {{ flowmonitor.name }} input
-{%       endif %}
-{%-      if flowmonitor.type == "output" %}
+{%        endif %}
+{%-       if flowmonitor.type == "output" %}
  ip flow monitor {{ flowmonitor.name }} output
-{%       endif %}
-{%     endfor %}
-{%   endif %}
+{%        endif %}
+{%      endfor %}
+{%    endif %}
 {# end of netflow #}
 {# begin ospf #}
 {%-  if 'ospf' in tag.slug -%}
@@ -45,8 +41,9 @@ interface {{ interface.name }}
 {%       endif -%}
 {%     endif -%}
 {%   endif -%}
-{# end of ospf #}
-{% endfor -%}
+{#- end of ospf -#}
+{#- end of tags -#}
+{%  endfor -%}
 {# additional config #}
 {%- if 'interfaces' in config_context -%}
 {%   for ifaceconfig in config_context.interfaces -%}
