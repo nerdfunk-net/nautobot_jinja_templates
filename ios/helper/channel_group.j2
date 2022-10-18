@@ -1,7 +1,7 @@
 {% macro set(interface,config_context) %}
 {% set channelgroup = interface["lag"]["name"].split('Port-channel')[1] %}
 {% set mode = config_context["default"]["channel-mode"] %}
-{% if 'channelmode_on' in interface.tags %}
+{% if 'channelmode_on' in interface.tags.slug %}
 {%   set mode = "on" %}
 {% endif %}
  channel-group{{channelgroup}} mode {{mode}}
