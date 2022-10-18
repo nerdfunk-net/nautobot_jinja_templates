@@ -8,6 +8,6 @@
  switchport trunk allowed vlan add {{ vlan.name }}
 {% endfor %}
 {% endif %}
-{% if interface.native_vlan is defined %}
- switchport trunk native vlan {{ interface.native_vlan.members.name }}
+{% if interface.untagged_vlan is defined %}
+ switchport trunk native vlan {{ interface.untagged_vlan.name }}
 {% endif %}
