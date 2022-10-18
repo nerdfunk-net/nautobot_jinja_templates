@@ -1,15 +1,15 @@
 {% macro description_and_ip(interface,config_context) %}
-interface {{ interface.name }}1
+interface {{ interface.name }}
 {% if interface.description | length > 1 -%}
  description {{ interface.description }}
-{% endif %}2
+{% endif %}
 {% if interface.ip_addresses | length > 0 %}
 {%  for addr in interface.ip_addresses %}
 {%    if addr.address is defined %}3
  ip address {{ addr.address }}
-{%     endif %}4
+{%     endif %}
 {%   endfor %}
 {%  else %}
  no ip address
-{%  endif %}
+{%  endif %}X
 {% endmacro %}
