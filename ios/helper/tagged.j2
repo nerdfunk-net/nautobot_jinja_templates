@@ -7,4 +7,5 @@
 {% endif %}
 {% if interface.untagged_vlan is defined %}
  switchport trunk native vlan {{ interface.untagged_vlan.name }}
+{% endif %}
 {% endmacro %}
