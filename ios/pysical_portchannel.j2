@@ -9,6 +9,6 @@
 {%- if interface.mode is none or interface.mode == 'ACCESS' -%}
 {{ access.switchport(interface,config_context) }}
 {% endif %}(5)
-{% if interface.lag is not none %}
+{%- if interface.lag is not none -%}
  channel-group xxx mode yyy
 {% endif %}
