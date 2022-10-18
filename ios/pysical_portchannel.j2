@@ -6,6 +6,6 @@
 {%- if interface.mode == 'TAGGED' %}
 {{ tagged.switchport(interface,config_context) }}
 {% endif %}
-{%- if interface.mode == 'TAGGED' %}
-{{ tagged.switchport(interface,config_context) }}
+{%- if interface.mode == null %}
+NULL
 {% endif %}
