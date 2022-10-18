@@ -10,5 +10,5 @@
 {{ access.switchport(interface,config_context) }}
 {% endif %}
 {% if interface.lag is not none %}
- channel-group {{interface["lag"]["name"].split('Port-channel')[1]}}mode yyy
+ channel-group{{interface["lag"]["name"].split('Port-channel')[1]}} mode yyy
 {% endif %}
