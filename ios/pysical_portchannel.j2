@@ -6,9 +6,11 @@
 {%- if interface.mode == 'TAGGED' -%}
 {{ tagged.switchport(interface,config_context) }}
 {% endif %}
+1
 {%- if interface.mode is none or interface.mode == 'ACCESS' -%}
 {{ access.switchport(interface,config_context) }}
 {% endif %}
+2
 {%- if interface.lag is not none -%}
- channel-group xxx mode yyy
+  channel-group xxx mode yyy
 {% endif %}
