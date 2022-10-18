@@ -1,5 +1,5 @@
 {% macro set(interface,config_context) %}
 {% set channelgroup = interface["lag"]["name"].split('Port-channel')[1] %}
 {% set mode = "active" %}
- channel-group{{channelgroup}} mode {{mode}}}}
+ channel-group{{channelgroup}} mode {{mode}}
 {% endmacro %}
