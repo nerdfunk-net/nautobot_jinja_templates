@@ -2,9 +2,9 @@
 {% import "./ios/helper/descr_ip.j2" as descrIp %}
 {{ descrIp.description_and_ip(interface,config_context) }}
 {% if interface.mode == 'TAGGED' %}
-  switchport
-  switchport mode trunk
+ switchport
+ switchport mode trunk
 {% for vlan in interface.tagged_vlans %}
-  switchport trunk allowed vlan add {{ vlan.name }}
+ switchport trunk allowed vlan add {{ vlan.name }}
 {% endfor %}
 {% endif %}
