@@ -1,3 +1,6 @@
 {# include macros #}
 {% import "./ios/helper/descr_ip.j2" as descrIp %}
 {{ descrIp.description_and_ip(interface,config_context) }}
+{% if interface.mode == 'TAGGED' %}
+TAGGED
+{% endif %}
