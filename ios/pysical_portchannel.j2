@@ -7,5 +7,5 @@
 {{ tagged.switchport(interface,config_context) }}
 {% endif %}
 {%- if interface.mode is none or interface.mode == 'ACCESS' %}
-access
+{{ access.switchport(interface,config_context) }}
 {% endif %}
