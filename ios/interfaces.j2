@@ -4,6 +4,7 @@
 {%     include './ios/loopback.j2' %}
 {%   endif %}
 {% endfor %}
+
 {# Port-channel second #}
 {% for interface in interfaces -%}
 {%    if 'Port-channel' in interface["name"] -%}
