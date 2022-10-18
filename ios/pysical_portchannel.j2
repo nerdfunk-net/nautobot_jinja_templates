@@ -4,11 +4,11 @@
 {% import "./ios/helper/access_port.j2" as access %}
 {{ descrIp.description_and_ip(interface,config_context) }}
 {%- if interface.mode == 'TAGGED' -%}
-{{ tagged.switchport(interface,config_context) }}7
-{% endif %}8
-{%- if interface.mode is none or interface.mode == 'ACCESS' -%}9
-{{ access.switchport(interface,config_context) }}10
-{% endif %}11
+{{ tagged.switchport(interface,config_context) }}
+{% endif %}
+{%- if interface.mode is none or interface.mode == 'ACCESS' -%}
+{{ access.switchport(interface,config_context) }}
+{% endif %}
 {% if interface.lag is not none %}
  channel-group xxx mode yyy
 {% endif %}
