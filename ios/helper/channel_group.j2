@@ -1,17 +1,18 @@
 {% macro set(interface,config_context) %}
 {% set channelgroup = interface["lag"]["name"].split('Port-channel')[1] %}
+{% set found = [] %}
 {% for tag in interface.tags %}
 {%   if 'channelmode_on' in tag.slug %}
-{%     set found = true %}
+{%     found.append(TRUE) %}
  channel-group{{channelgroup}} mode on
 {%   elif 'channelmode_active' %}
-{%     set found = true %}
+{%     found.append(TRUE) %}
  channel-group{{channelgroup}} mode active
 {%   elif 'channelmode_passive' %}
-{%     set found = true %}
+{%     found.append(TRUE) %}
  channel-group{{channelgroup}} mode passive
 {%   endif %}
 {% endfor %}
-{% found | config_context["default"]["channel-mode"] %}
- channel-group{{channelgroup}} mode {{ found }}
+{% if found | length == 0 %}
+ channel-group{{channelgroup}} mode {{ config_context["default"]["channel-mode"] }}
 {% endmacro %}
