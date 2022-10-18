@@ -5,5 +5,5 @@
 {{ descrIp.description_and_ip(interface,config_context) }}
 {%- if interface.mode == 'TAGGED' %}
 TAGGED
-{# tagged.switchport(interface,config_context) #}
+{{ tagged.switchport(interface,config_context) }}
 {% endif %}
