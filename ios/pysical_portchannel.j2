@@ -9,3 +9,6 @@
 {%- if interface.mode is none or interface.mode == 'ACCESS' %}
 {{ access.switchport(interface,config_context) }}
 {% endif %}
+{% if interface.lag is defined %}
+LAG LAG
+{% endif %}
