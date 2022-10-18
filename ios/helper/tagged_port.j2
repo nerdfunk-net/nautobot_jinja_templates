@@ -6,9 +6,4 @@
  switchport trunk allowed vlan add {{ vlan.name }}
 {%   endif %}
 {% endfor %}
-{% if interface.untagged_vlan is defined %}
-{%   if interface.untagged_vlan.name is defined %}
- switchport trunk native vlan {{ interface.untagged_vlan.name }}
-{%   endif %}
-{% endif %}
 {% endmacro %}
