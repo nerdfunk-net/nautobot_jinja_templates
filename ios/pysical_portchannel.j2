@@ -6,6 +6,7 @@
 {%- if interface.mode == 'TAGGED' -%}
 {{ tagged.switchport(interface,config_context) }}(1)
 {% endif %}
+channel-group 111 mode 222
 {%- if interface.mode is none or interface.mode == 'ACCESS' -%}
 {{ access.switchport(interface,config_context) }}(2)
 {% endif %}
