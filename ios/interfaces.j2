@@ -11,3 +11,12 @@
 {%      include './ios/pysical_portchannel.j2' %}
 {%    endif %}
 {% endfor %}
+
+{# now all other interfaces -#}
+{% for interface in interfaces %}
+{%   if 'Loop' not in interface["name"] %}
+{%     if 'Port-channel' not in interface["name"] %}
+{%        include './ios/pysical_portchannel.j2' %}
+{%     endif %}
+{%   endif %}
+{% endfor -%}
