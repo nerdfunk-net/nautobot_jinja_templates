@@ -5,6 +5,6 @@
   switchport
   switchport mode trunk
 {% for vlan in interface.tagged_vlans %}
-  switchport trunk allowed vlan add {{ vlan }}
+  switchport trunk allowed vlan add {{ vlan.name }}
 {% endfor %}
 {% endif %}
