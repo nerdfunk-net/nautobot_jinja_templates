@@ -5,9 +5,9 @@ interface {{ interface.name }}1
 {% endif %}2
 {% if interface.ip_addresses | length > 0 %}
 {%  for addr in interface.ip_addresses %}
-{%    if addr.address is defined %}
+{%    if addr.address is defined %}3
  ip address {{ addr.address }}
-{%     endif %}
+{%     endif %}4
 {%   endfor %}
 {%  else %}
  no ip address
