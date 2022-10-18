@@ -6,7 +6,7 @@
 {% endfor %}
 # Port-channel second #}
 {% for interface in interfaces -%}
-{%   if 'Port-channel' in interface["name"] -%}
-{{      include './ios/pysical_portchannel.j2' %} }}
+{%    if 'Port-channel' in interface["name"] -%}
+{%      include './ios/pysical_portchannel.j2' %}
 {%    endif %}
-{%  endfor %}
+{% endfor %}
