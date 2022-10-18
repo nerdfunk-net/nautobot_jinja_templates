@@ -3,7 +3,7 @@
 {% set mode = config_context["default"]["channel-mode"] %}
 {% for tag in interface.tags %}
 {%   if 'channelmode_on' in tag.slug %}
-{%     set mode = "on" %}
+TAG FOUND
 {%   endif %}
 {% endfor %}
  channel-group{{channelgroup}} mode {{mode}}
