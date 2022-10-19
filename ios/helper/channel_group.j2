@@ -1,7 +1,7 @@
-{% macro set(interface,config_context) %}
-{% set channelgroup = interface["lag"]["name"].split('Port-channel')[1] %}
-{% set found = [] %}
-{% for tag in interface.tags %}
+{%- macro set(interface,config_context) -%}
+{%- set channelgroup = interface["lag"]["name"].split('Port-channel')[1] -%}
+{%- set found = [] -%}
+{%- for tag in interface.tags -%}
 {%-   if 'channelmode_on' in tag.slug -%}
 {%-     set temp = found.append(TRUE) %}
  1channel-group{{channelgroup}} mode on
@@ -16,4 +16,4 @@
 {%- if found | length == 0 %}
  4channel-group{{channelgroup}} mode {{ config_context["default"]["channel-mode"] }}
 {% endif -%}
-{% endmacro %}
+{%- endmacro -%}
