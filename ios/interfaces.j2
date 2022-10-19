@@ -1,8 +1,8 @@
 {# Loopback first #}
 {% for interface in interfaces %}
 {%   if 'Loop' in interface["name"] %}
-interface {{ interface.name }}
-{%     include './ios/loopback.j2' %}
+interface {{ interface.name }}(0)
+{%     include './ios/loopback.j2' %}(*)
 {%   endif %}
 {% endfor %}
 
