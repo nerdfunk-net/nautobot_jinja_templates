@@ -1,4 +1,4 @@
-{% macro set(config_context) %}
+{% macro configure(config_context) %}
 {%      if config_context.keys.ospf is defined %}
 {%        if config_context.keys.ospf.authentication is defined %}
  ip ospf authentication {{ config_context.keys.ospf.authentication }}
