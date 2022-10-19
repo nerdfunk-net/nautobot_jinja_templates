@@ -4,10 +4,10 @@
 {%-     for flowmonitor in config_context.netflow.flowmonitor -%}
 {%-       if flowmonitor.type == "input" -%}
  ip flow monitor {{ flowmonitor.name }} input
-{%-       endif -%}
+{%       endif -%}
 {%-       if flowmonitor.type == "output" -%}
  ip flow monitor {{ flowmonitor.name }} output
-{%-       endif -%}
+{%       endif -%}
 {%-     endfor -%}
 {%-   endif -%}
 {%- endfor -%}
