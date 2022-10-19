@@ -1,4 +1,4 @@
-{% macro set(config_context) %}
+{% macro configure(config_context) %}
 {%      for flowmonitor in config_context.netflow.flowmonitor %}
 {%        if flowmonitor.type == "input" %}
  ip flow monitor {{ flowmonitor.name }} input

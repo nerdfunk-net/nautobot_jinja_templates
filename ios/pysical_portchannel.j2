@@ -4,6 +4,7 @@
 {% import "./ios/helper/access_port.j2" as access %}
 {% import "./ios/helper/l3_port.j2" as l3 %}
 {% import "./ios/helper/channel_group.j2" as channel %}
+{% import "./ios/helper/netflow_interface_config.j2" as netflow %}
 {{ description.description(interface,config_context) }}
 {% if interface.mode == 'TAGGED' or interface.mode == 'TAGGED_ALL'%}
 {{ tagged.switchport(interface,config_context) }}
@@ -14,5 +15,6 @@
 {%- endif %}
 {{ ipaddr.address(interface,config_context) }}
 {%- if interface.lag is not none %}
+{{ netflow.configure(config_context) }}
 {{ channel.set(interface,config_context) }}
 {% endif %}
