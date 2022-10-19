@@ -4,16 +4,16 @@
 {%- for tag in interface.tags -%}
 {%-   if 'channelmode_on' in tag.slug -%}
 {%-     set temp = found.append(TRUE) %}
- 1channel-group{{channelgroup}} mode on
+ channel-group{{channelgroup}} mode on
 {%   elif 'channelmode_active' -%}
 {%-     set temp = found.append(TRUE) %}
- 2channel-group{{channelgroup}} mode active
+ channel-group{{channelgroup}} mode active
 {%   elif 'channelmode_passive' -%}
 {%-     set temp = found.append(TRUE) %}
- 3channel-group{{channelgroup}} mode passive
+ channel-group{{channelgroup}} mode passive
 {%   endif -%}
 {%- endfor -%}
 {%- if found | length == 0 %}
- 4channel-group{{channelgroup}} mode {{ config_context["default"]["channel-mode"] }}
+ channel-group{{channelgroup}} mode {{ config_context["default"]["channel-mode"] }}
 {% endif -%}
 {%- endmacro -%}
