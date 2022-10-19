@@ -5,14 +5,14 @@
 {% import "./ios/helper/l3_port.j2" as l3 %}
 {% import "./ios/helper/channel_group.j2" as channel %}
 {{ description.description(interface,config_context) }}
-{%- if interface.mode == 'TAGGED' -%}
+{% if interface.mode == 'TAGGED' %}
 {{ tagged.switchport(interface,config_context) }}
-{%- elif interface.mode is none -%}
+{% elif interface.mode is none %}
 {{ l3.port(interface,config_context) }}
-{%- elif interface.mode == 'ACCESS' -%}
+{%- elif interface.mode == 'ACCESS' %}
 {{ access.switchport(interface,config_context) }}
-{%- endif -%}
-{%- if interface.lag is not none -%}
+{% endif -%}
+{% if interface.lag is not none %}
 {{ channel.set(interface,config_context) }}
-{%- endif -%}
+{% endif %}
 {{ ipaddr.address(interface,config_context) }}
