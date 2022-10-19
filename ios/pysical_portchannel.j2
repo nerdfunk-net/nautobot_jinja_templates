@@ -1,14 +1,15 @@
 {# include macros #}
-{% import "./ios/helper/descr_ip.j2" as descrIp %}
+{% import "./ios/helper/description.j2" as description %}
+{% import "./ios/helper/ipaddr.j2" as ipaddr %}
 {% import "./ios/helper/tagged_port.j2" as tagged %}
 {% import "./ios/helper/access_port.j2" as access %}
-{% import "./ios/helper/routed_port.j2" as routed %}
+{% import "./ios/helper/l3_port.j2" as l3 %}
 {% import "./ios/helper/channel_group.j2" as channel %}
-{{ descrIp.description_and_ip(interface,config_context) }}
+{{ description.description_and_ip(interface,config_context) }}
 {%- if interface.mode == 'TAGGED' -%}
 {{ tagged.switchport(interface,config_context) }}
 {%- elif interface.mode is none -%}
-{{ routed.switchport(interface,config_context) }}
+{{ l3.port(interface,config_context) }}
 {%- elif interface.mode == 'ACCESS' -%}
 {{ access.switchport(interface,config_context) }}
 {%- endif -%}
