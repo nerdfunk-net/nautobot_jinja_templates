@@ -1,4 +1,6 @@
-{# include macros #}
+{#
+  include macros
+#}
 {% import "./ios/helper/description.j2" as description %}
 {% import "./ios/helper/ipaddr.j2" as ipaddr %}
 {% import "./ios/helper/tagged_port.j2" as tagged %}
@@ -16,3 +18,4 @@
 {%- if interface.lag is not none -%}
 {{ channel.set(interface,config_context) }}
 {%- endif -%}
+{{ ipaddr.address(interface,config_context) }}
