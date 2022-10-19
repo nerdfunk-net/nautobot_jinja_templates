@@ -1,4 +1,4 @@
-{% macro description_and_ip(interface,config_context) %}
+{% macro description(interface,config_context) %}
 interface {{ interface.name }}
 {% if interface.description | length > 1 %}
  description {{ interface.description }}
