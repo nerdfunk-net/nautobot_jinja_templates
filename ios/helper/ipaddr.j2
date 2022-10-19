@@ -1,4 +1,4 @@
-{% macro address(interface,config_context) %}
+{%- macro address(interface,config_context) -%}
 X
 {%- if interface.ip_addresses | length > 0 -%}
 {%-  for addr in interface.ip_addresses -%}
