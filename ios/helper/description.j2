@@ -1,6 +1,6 @@
 {% macro description(interface,config_context) %}
-interface {{ interface.name }}(1)
+interface {{ interface.name }}
 {% if interface.description | length > 1 %}
  description {{ interface.description }}
 {% endif -%}
-{% endmacro %}
+{%- endmacro %}
