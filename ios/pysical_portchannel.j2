@@ -15,4 +15,4 @@
 {%- endif %}
 {{ ipaddr.address(interface,config_context) }}
 {{ netflow.configure(interface,config_context) }}
-{% if interface.lag is not none %}{{ channel.set(interface,config_context) }}{% endif %}
+{%- if interface.lag is not none %}{{ channel.set(interface,config_context) }}{% endif %}
