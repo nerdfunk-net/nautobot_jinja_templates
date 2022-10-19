@@ -7,7 +7,7 @@
 {% import "./ios/helper/access_port.j2" as access %}
 {% import "./ios/helper/l3_port.j2" as l3 %}
 {% import "./ios/helper/channel_group.j2" as channel %}
-{{ description.description_and_ip(interface,config_context) }}
+{{ description.description(interface,config_context) }}
 {%- if interface.mode == 'TAGGED' -%}
 {{ tagged.switchport(interface,config_context) }}
 {%- elif interface.mode is none -%}
