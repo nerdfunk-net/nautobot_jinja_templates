@@ -13,7 +13,4 @@
  channel-group{{channelgroup}} mode passive
 {%   endif %}
 {% endfor %}
-{% if found | length == 0 %}
- channel-group{{channelgroup}} mode {{ config_context["default"]["channel-mode"] }}
-{% endif %}
 {% endmacro %}
