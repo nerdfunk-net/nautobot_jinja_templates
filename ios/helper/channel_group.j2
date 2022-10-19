@@ -14,6 +14,6 @@
 {%   endif %}
 {% endfor %}
 {% if found | length == 0 %}
- XXchannel-group{{channelgroup}} mode {{ config_context["default"]["channel-mode"] }}
-{% endif %}
+ channel-group{{channelgroup}} mode {{ config_context["default"]["channel-mode"] }}
+{%- endif %}
 {% endmacro %}
