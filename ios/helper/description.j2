@@ -2,5 +2,7 @@
 interface {{ interface.name }}
 {% if interface.description | length > 1 %}
  description {{ interface.description }}
+{% else %}
+ description {{ interface.name }}
 {%- endif -%}
 {%- endmacro %}
