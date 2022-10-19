@@ -13,5 +13,4 @@
 {%- else %}
 {{ l3.port(interface,config_context) }}
 {%- endif %}
-{{ ipaddr.address(interface,config_context) }}(1){{ netflow.configure(interface,config_context) }}(2){%- if interface.lag is not none -%}{{ channel.set(interface,config_context) }}(3)
-{% endif -%}(4)
+{{ ipaddr.address(interface,config_context) }}(1){{ netflow.configure(interface,config_context) }}(2){%- if interface.lag is not none -%}{{ channel.set(interface,config_context) }}(3){% endif -%}(4)
