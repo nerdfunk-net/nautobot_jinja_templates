@@ -3,9 +3,9 @@
 {%  for addr in interface.ip_addresses %}
 {%    if addr.address is defined %}
  ip address {{ addr.address }}
-{%-     endif %}
+{%     endif %}
 {%   endfor %}
 {%  else %}
  no ip address
-{%-  endif %}
+{%  endif %}
 {% endmacro %}
