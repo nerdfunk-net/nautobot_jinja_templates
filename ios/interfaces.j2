@@ -1,5 +1,6 @@
 {# Loopback first #}
 {% for interface in interfaces %}
+interface {{ interface.name }}
 {%   if 'Loop' in interface["name"] %}
 {%     include './ios/loopback.j2' %}
 {%   endif %}
@@ -7,6 +8,7 @@
 
 {# Port-channel second #}
 {% for interface in interfaces %}
+interface {{ interface.name }}
 {%    if 'Port-channel' in interface["name"] %}
 {%      include './ios/pysical_portchannel.j2' %}
 {%    endif %}
@@ -14,6 +16,7 @@
 
 {# now all other interfaces -#}
 {% for interface in interfaces %}
+interface {{ interface.name }}
 {%   if 'Loop' not in interface["name"] %}
 {%     if 'Port-channel' not in interface["name"] %}
 {%        include './ios/pysical_portchannel.j2' %}
