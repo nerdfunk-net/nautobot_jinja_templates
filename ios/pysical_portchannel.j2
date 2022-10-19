@@ -9,7 +9,7 @@
 {{ tagged.switchport(interface,config_context) }}
 {%- elif interface.mode == 'ACCESS' %}
 {{ access.switchport(interface,config_context) }}
-{%- else %}
+{%- else %}XXX
 {{ l3.port(interface,config_context) }}
 {%- endif %}
 {{ ipaddr.address(interface,config_context) }}
