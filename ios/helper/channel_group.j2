@@ -12,7 +12,7 @@
 {%     set temp = found.append(TRUE) %}
  channel-group{{channelgroup}} mode passive
 {%-   endif %}
-{% endfor %}
+{%- endfor %}
 {% if found | length == 0 %}
  channel-group{{channelgroup}} mode {{ config_context["default"]["channel-mode"] }}
 {%- endif %}
