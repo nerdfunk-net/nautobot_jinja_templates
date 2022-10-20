@@ -1,3 +1,7 @@
 {% if config_context.ospf is defined -%}
-OSPF
+{%   if config_context.ospf.pid is defined -%}
+router ospf {{ config_context.ospf.pid }}
+{%   else -%}
+router ospf {{ config_context.default.ospf_pid }}
+{%   endif -%}
 {% endif -%}
