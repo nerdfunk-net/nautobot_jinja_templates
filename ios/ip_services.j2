@@ -1,5 +1,12 @@
 {% if config_context.ipservices is defined -%}
 {%   if config_context.ipservices.ftp is defined -%}
+{%     if config_context.ipservices.ftp.source is defined -%}
 ip ftp source-interface {{ config_context.ipservices.ftp.source }}
-{%   endif -%}
+{%     endif -%}
+{%     if config_context.ipservices.ftp.username is defined -%}
+ip ftp username {{ config_context.ipservices.ftp.username }}
+{%     endif -%}
+{%     if config_context.ipservices.ftp.password is defined -%}
+ip ftp password {{ config_context.ipservices.ftp.password }}
+{%     endif -%}{%   endif -%}
 {% endif -%}
