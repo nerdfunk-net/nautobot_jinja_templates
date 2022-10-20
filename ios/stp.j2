@@ -5,5 +5,15 @@ spanning-tree mode {{ config_context.stp.default.mode }}
 {%     else -%}
 ! no spanning-tree mode configured
 {%     endif -%}
+{%     if config_context.stp.default.bpduguard is defined -%}
+spanning-tree portfast edge bpduguard default
+{%     else -%}
+! no bpduguard configured
+{%     endif -%}
+{%     if config_context.stp.default.bpdufilter is defined -%}
+spanning-tree portfast edge bpdufilter default
+{%     else -%}
+! no bpdufilter configured
+{%     endif -%}
 {%   endif -%}
 {% endif %}
