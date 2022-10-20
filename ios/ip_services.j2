@@ -1,4 +1,11 @@
 {% if config_context.ipservices is defined -%}
+{%   if config_context.ipservices.tcp is defined -%}
+{%     if config_context.ipservices.tcp.pmtud is defined -%}
+{%       if config_context.ipservices.tcp.pmtud  == true -%}
+ip tcp path-mtu-discovery
+{%       endif -%}
+{%     endif -%}
+{%   endif -%}
 {%   if config_context.ipservices.ftp is defined -%}
 {%     if config_context.ipservices.ftp.passive is defined -%}
 {%       if config_context.ipservices.ftp.passive == true -%}
