@@ -18,7 +18,7 @@ spanning-tree portfast edge bpdufilter default
 {%   endif -%}
 {%   if config_context.stp.additional is defined -%}
 {%     for config in config_context.stp.additional %}
- {{ config }}
+{{ config }}
 {%     endfor -%}
 {%   endif -%}
 {% endif %}
