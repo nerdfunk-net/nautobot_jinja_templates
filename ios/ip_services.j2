@@ -1,5 +1,10 @@
 {% if config_context.ipservices is defined -%}
 {%   if config_context.ipservices.ftp is defined -%}
+{%     if config_context.ipservices.ftp.passive == true -%}
+ip ftp passive
+{%     else -%}
+no ip ftp passive
+{%     endif -%}
 {%     if config_context.ipservices.ftp.source is defined -%}
 ip ftp source-interface {{ config_context.ipservices.ftp.source }}
 {%     endif -%}
